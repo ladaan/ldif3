@@ -120,7 +120,7 @@ class LDIFWriter(object):
         self._base64_attrs
         """
         return attr_type.lower() in self._base64_attrs or \
-            isinstance(attr_value, bytes) or \
+            not isinstance(attr_value, bytes) or \
             UNSAFE_STRING_RE.search(attr_value) is not None
 
     def _unparse_attr(self, attr_type, attr_value):
